@@ -1,0 +1,19 @@
+.app{
+ 
+}
+#container {
+  /* outline:1px solid red; */
+background-color: red;
+  }
+ 
+ 
+  #grid{
+  /* outline:1px solid red; */
+  height: 100vh;
+
+  }
+ #rssInput input {
+  width: 80vw;
+
+ }
+ 
