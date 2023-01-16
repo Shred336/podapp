@@ -1,5 +1,5 @@
 import "./podapp/podapp.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { PodGrid } from "./podapp/PodGrid";
 
 function App() {
@@ -64,6 +64,17 @@ function App() {
     }
   };
 
+  let loadFeedTimeout;
+
+  useEffect(() => {
+    // this will run when inputFeedUrl changes
+    clearTimeout(loadFeedTimeout);
+    loadFeedTimeout = setTimeout(() => {
+      console.log("should've waited");
+      handleLoadFeedClick();
+    }, 500);
+  }, [inputFeedUrl]);
+
   return (
     <div className="App">
       <h1>FatDick PodPlayer</h1>
@@ -93,7 +104,7 @@ function App() {
           defaultValue={rssFeed}
           value={inputFeedUrl}
           onChange={(event) => setInputFeedUrl(event.target.value)}
-          onChange={handleLoadFeedClick}
+          // onChange={handleLoadFeedClick}
         />
         <button onClick={handleLoadFeedClick}>Load Feed</button>
         <button onClick={(event) => setInputFeedUrl(event.target.value)}>
